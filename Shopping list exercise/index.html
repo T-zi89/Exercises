@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping list example</title>
+    <style>
+      li {
+        margin-bottom: 10px;
+      }
+
+      li button {
+        font-size: 12px;
+        margin-left: 20px;
+        color: #666;
+      }
+    </style>
+  </head>
+  <body>
+
+    <h1>My shopping list</h1>
+
+    <div>
+      <label for="item">Enter a new item:</label>
+      <input type="text" name="item" id="item">
+      <button>Add item</button>
+    </div>
+
+    <ul>
+
+    </ul>
+
+    <script>
+
+      // These variables hold references to the unordered list, 
+      // input and button elements
+      const unorderedListVariable = document.querySelector("ul");
+      const inputVariable = document.querySelector("input");
+      const buttonVariable = document.querySelector("button");
+      // This function will run in response of the button being clicked
+      buttonVariable.addEventListener("click", () => {
+      // This variable hold the current value of the input element
+        const currentInputValue = inputVariable.value;
+      // Ths input element value is set to an empty string
+        inputVariable.value = "";
+
+      // These list, span and button elements are stored in variables 
+      const listItem = document.createElement("li");
+      const listText = document.createElement("span");
+      const listButton = document.createElement("button");
+      // The span and button elements are appended to the list item
+      // and the text content of the span element is set to the input element from before
+      // while the text content of the button is set to "Delete"
+      listItem.appendChild(listText);
+      listText.textContent = currentInputValue;
+      listItem.appendChild(listButton);
+      listButton.textContent = "Delete";
+      // The list item is appended to the list
+      unorderedListVariable.appendChild(listItem);
+      // Added an event handler to the "Delete" button, so that, when
+      // clicked, it will delete the entire list item
+      listButton.addEventListener("click", () => {
+        unorderedListVariable.removeChild(listItem);
+      });
+      // The focus method is set to the input element
+      input.focus();
+      });  
+    </script>
+  </body>
+</html>
